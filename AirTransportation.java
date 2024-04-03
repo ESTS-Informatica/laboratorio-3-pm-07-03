@@ -12,8 +12,16 @@ public class AirTransportation extends Transport
    
     public AirTransportation(String name, int numberOfContainers)
     {
-        this.name = name;
-        this.numberOfContainers = numberOfContainers;
+        if(name != null)
+            this.name = name;
+        else
+            this.name = "";
+            
+        if(numberOfContainers >= 0)
+            this.numberOfContainers = numberOfContainers;
+        else
+            this.numberOfContainers = 0;
+            
         super.setFees(0.4);
     }
     
@@ -30,12 +38,15 @@ public class AirTransportation extends Transport
     
     public void setName(String name)
     {
-        this.name = name;    
+        if(name != null)
+            this.name = name;    
+
     }
     
     public void setNumberOfContainers(int numberOfContainers)
     {
-        this.numberOfContainers = numberOfContainers;
+        if(numberOfContainers >= 0)
+            this.numberOfContainers = numberOfContainers;
     }
     
     public double getPriceWithFees()
@@ -44,6 +55,7 @@ public class AirTransportation extends Transport
         return getPrice() - extra;
     }
     
+    @Override
     public String getTransportType()
     {
         return "Transporte Aéreo";
@@ -52,6 +64,6 @@ public class AirTransportation extends Transport
     @Override
     public String toString()
     {
-        return super.toString() + "           Nome: " + getName() + "  NºContentores: " + getNumberOfContainers();
+        return super.toString() + "           Nome: " + getName() + "  NºContentores: " + getNumberOfContainers() + "\n";
     }
 }
